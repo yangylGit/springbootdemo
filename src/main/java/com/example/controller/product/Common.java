@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RocketMessage(groupID = "GID_common")
 public class Common {
     @RequestMapping(value = "/commonA")
-    @CommonMessage(topic = "commonA", tag = "commonA",messageSendType = MessageSendType.SEND)
+    @CommonMessage(topic = "commonA", tag = "commonA",messageSendType = MessageSendType.SEND,callback = MySendCallback.class)
     public String sendCommonMsg() {
         return "commonA";
     }
     @RequestMapping(value = "/commonB")
-    @CommonMessage(topic = "commonB", tag = "commonB",messageSendType = MessageSendType.SEND_ASYNC)
+    @CommonMessage(topic = "commonB", tag = "commonB",messageSendType = MessageSendType.SEND_ASYNC,callback = MySendCallback.class)
     public String sendAsyncMsg() {
         return "commonB";
     }
     @RequestMapping(value = "/commonC")
-    @CommonMessage(topic = "commonC", tag = "commonC",messageSendType = MessageSendType.SEND_ONE_WAY)
+    @CommonMessage(topic = "commonC", tag = "commonC",messageSendType = MessageSendType.SEND_ONE_WAY,callback = MySendCallback.class)
     public String sendOneWayMessage() {
         return "commonC";
     }

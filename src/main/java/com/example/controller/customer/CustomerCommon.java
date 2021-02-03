@@ -12,8 +12,16 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RocketListener(groupID = "GID_common",messageModel = PropertyValueConst.CLUSTERING)
 public class CustomerCommon {
+    @MessageListener(topic = "commonA",tag = "commonA")
+    public void send(String message) {
+        log.info(message);
+    }
+    @MessageListener(topic = "commonB",tag = "commonB")
+    public void sendAsync(String message) {
+        log.info(message);
+    }
     @MessageListener(topic = "commonC",tag = "commonC")
-    public void delayed(String message) {
-        log.info("message");
+    public void sendOneWay(String message) {
+        log.info(message);
     }
 }
