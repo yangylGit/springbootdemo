@@ -9,16 +9,16 @@ spring:
     #url: jdbc:mysql://127.0.0.1:3306/springbootdemo?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
     #username: root
     #password: 1234
-    #¶¯Ì¬Êı¾İÔ´ÅäÖÃ
+    #åŠ¨æ€æ•°æ®æºé…ç½®
     dynamic:
-      primary: master #ÉèÖÃÄ¬ÈÏµÄÊı¾İÔ´»òÕßÊı¾İÔ´×é,Ä¬ÈÏÖµ¼´Îªmaster
-      strict: false #ÉèÖÃÑÏ¸ñÄ£Ê½,Ä¬ÈÏfalse²»Æô¶¯. Æô¶¯ºóÔÚÎ´Æ¥Åäµ½Ö¸¶¨Êı¾İÔ´Ê±ºò»áÅ×³öÒì³£,²»Æô¶¯ÔòÊ¹ÓÃÄ¬ÈÏÊı¾İÔ´.
+      primary: master #è®¾ç½®é»˜è®¤çš„æ•°æ®æºæˆ–è€…æ•°æ®æºç»„,é»˜è®¤å€¼å³ä¸ºmaster
+      strict: false #è®¾ç½®ä¸¥æ ¼æ¨¡å¼,é»˜è®¤falseä¸å¯åŠ¨. å¯åŠ¨ååœ¨æœªåŒ¹é…åˆ°æŒ‡å®šæ•°æ®æºæ—¶å€™ä¼šæŠ›å‡ºå¼‚å¸¸,ä¸å¯åŠ¨åˆ™ä½¿ç”¨é»˜è®¤æ•°æ®æº.
       datasource:
         master:
           url: jdbc:mysql://127.0.0.1:3306/springbootdemo?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
           username: root
           password: 1234
-          driver-class-name: com.mysql.cj.jdbc.Driver # 3.2.0¿ªÊ¼Ö§³ÖSPI¿ÉÊ¡ÂÔ´ËÅäÖÃ
+          driver-class-name: com.mysql.cj.jdbc.Driver # 3.2.0å¼€å§‹æ”¯æŒSPIå¯çœç•¥æ­¤é…ç½®
         slave_1:
           url: jdbc:mysql://192.168.12.183/springbootdemo?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
           username: root
@@ -37,18 +37,18 @@ spring:
     sentinel:
       master: mymaster
       nodes:
-       - 127.0.0.1:26380
-       - 127.0.0.1:26381
-       - 127.0.0.1:26382
+        - 127.0.0.1:26380
+        - 127.0.0.1:26381
+        - 127.0.0.1:26382
     lettuce:
       pool:
-        max-active: 8   #×î´óÁ¬½ÓÊı¾İ¿âÁ¬½ÓÊı,Éè 0 ÎªÃ»ÓĞÏŞÖÆ
-        max-idle: 8     #×î´óµÈ´ıÁ¬½ÓÖĞµÄÊıÁ¿,Éè 0 ÎªÃ»ÓĞÏŞÖÆ
-        max-wait: -1ms  #×î´ó½¨Á¢Á¬½ÓµÈ´ıÊ±¼ä¡£Èç¹û³¬¹ı´ËÊ±¼ä½«½Óµ½Òì³£¡£ÉèÎª-1±íÊ¾ÎŞÏŞÖÆ¡£
-        min-idle: 0     #×îĞ¡µÈ´ıÁ¬½ÓÖĞµÄÊıÁ¿,Éè 0 ÎªÃ»ÓĞÏŞÖÆ
+        max-active: 8   #æœ€å¤§è¿æ¥æ•°æ®åº“è¿æ¥æ•°,è®¾ 0 ä¸ºæ²¡æœ‰é™åˆ¶
+        max-idle: 8     #æœ€å¤§ç­‰å¾…è¿æ¥ä¸­çš„æ•°é‡,è®¾ 0 ä¸ºæ²¡æœ‰é™åˆ¶
+        max-wait: -1ms  #æœ€å¤§å»ºç«‹è¿æ¥ç­‰å¾…æ—¶é—´ã€‚å¦‚æœè¶…è¿‡æ­¤æ—¶é—´å°†æ¥åˆ°å¼‚å¸¸ã€‚è®¾ä¸º-1è¡¨ç¤ºæ— é™åˆ¶ã€‚
+        min-idle: 0     #æœ€å°ç­‰å¾…è¿æ¥ä¸­çš„æ•°é‡,è®¾ 0 ä¸ºæ²¡æœ‰é™åˆ¶
       shutdown-timeout: 100ms
 jeecg:
-  #·Ö²¼Ê½ËøÅäÖÃ
+  #åˆ†å¸ƒå¼é”é…ç½®
   redisson:
     address: mymaster,127.0.0.1:26380,127.0.0.1:26381,127.0.0.1:26382
     type: SENTINEL
@@ -61,10 +61,14 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath*:mapper/**/*Mapper.xml
   global-config:
-    # Âß¼­É¾³ıÅäÖÃ
+    # é€»è¾‘åˆ é™¤é…ç½®
     db-config:
-      # É¾³ıÇ°
+      # åˆ é™¤å‰
       logic-not-delete-value: 1
-      # É¾³ıºó
+      # åˆ é™¤å
       logic-delete-value: 0
-
+#é˜¿é‡Œäº‘rocketmq
+thierrysquirrel:
+  access-key: '1'
+  secret-key: '1'
+  name-srv-addr: 192.168.16.122:9876
