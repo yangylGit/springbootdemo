@@ -16,4 +16,9 @@ public class Order {
     public String order() {
         return "order";
     }
+    @RequestMapping(value = "/ordeals")
+    @OrderMessage(topic = "ordeals",tag = "ordeals")
+    public String ordeals() {
+        return "ordeals";
+    }
 }

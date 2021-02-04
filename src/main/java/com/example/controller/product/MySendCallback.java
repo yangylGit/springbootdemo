@@ -15,11 +15,11 @@ import org.springframework.stereotype.Component;
 public class MySendCallback implements SendCallback {
     @Override
     public void onSuccess(SendResult sendResult) {
-        log.info("发送消息成功");
+        log.info("发送消息成功:"+sendResult.toString());
     }
 
     @Override
     public void onException(OnExceptionContext onExceptionContext) {
-        log.info("发送消息失败");
+        log.info("发送消息失败:"+onExceptionContext.toString());
     }
 }

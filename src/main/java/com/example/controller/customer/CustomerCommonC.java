@@ -10,18 +10,11 @@ import lombok.extern.slf4j.Slf4j;
  * ## 监听消息使用 messageModel 控制集群或广播消费模式
  */
 @Slf4j
-@RocketListener(groupID = "GID_common",messageModel = PropertyValueConst.CLUSTERING)
-public class CustomerCommon {
-    @MessageListener(topic = "commonA",tag = "commonA")
-    public void send(String message) {
-        log.info(message);
-    }
-    @MessageListener(topic = "commonB",tag = "commonB")
-    public void sendAsync(String message) {
-        log.info(message);
-    }
+@RocketListener(groupID = "GID_commonC",messageModel = PropertyValueConst.BROADCASTING)
+public class CustomerCommonC {
     @MessageListener(topic = "commonC",tag = "commonC")
-    public void sendOneWay(String message) {
+    public boolean commonC(String message) {
         log.info(message);
+        return true;
     }
 }
